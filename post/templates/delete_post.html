@@ -1,0 +1,7 @@
+{% if user.id == post.author.id %}
+<h3>Are you sure to want delete post {{ post.title }}?</h3>
+<form method="POST">
+    {% csrf_token %}
+    <button>Delete</button>
+</form>
+{% endif %}

@@ -1,0 +1,7 @@
+<h1>Edit post</h1>
+
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_ul }}
+    <button>Confirm</button>
+</form>
