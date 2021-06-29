@@ -23,14 +23,14 @@ class Home(ListView):
 
     def get_queryset(self):
         """Filter list by search key."""
-        search_word = self.request.GET.get('search')
+        search_word: str = self.request.GET.get('search')
         if search_word:
             # Our search key can consist of several words,
             # so we generate a complex search query for each word separately.
             qs = reduce(operator.or_, (Q(title__icontains=word) for word in search_word.split()))
             return Post.objects.filter(qs).order_by('-date')
         else:
-            return Post.objects.all()
+            return Post.objects.all().order_by('-date')
 
 
 class PostDetails(DetailView):
